@@ -4,6 +4,8 @@
 
 Skills for AIs to do evals, error analysis, and more.
 
+Based on knowledge from the [AI Evals For Engineers & PMs](https://maven.com/parlance-labs/evals) course, but otherwise unaffiliated.
+
 ## Usage
 
 You can install skills using [the `skills` tool](https://skills.sh):
