@@ -13,3 +13,5 @@ npx skills add <owner/repo>
 ```
 
 ## Available skills
+
+- **llm-as-a-judge** - Build, validate, and deploy LLM-as-Judge evaluators for automated quality assessment of LLM pipeline outputs
