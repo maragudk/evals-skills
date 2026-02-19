@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>evals-skills &mdash; AI Skills for Evals, Error Analysis &amp; More</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            owl: {
+              dark: '#1e1b4b',
+              teal: '#2dd4bf',
+              coral: '#f97066',
+              purple: '#a78bfa',
+              amber: '#fbbf24',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-image: radial-gradient(circle, #e2e8f0 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    .workflow-connector {
+      position: relative;
+    }
+    .workflow-connector::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -1.5rem;
+      width: 1.5rem;
+      height: 2px;
+      background: #2dd4bf;
+    }
+    @media (max-width: 1023px) {
+      .workflow-connector::after {
+        top: auto;
+        bottom: -1.5rem;
+        right: 50%;
+        width: 2px;
+        height: 1.5rem;
+      }
+    }
+
+    .skill-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .skill-card:nth-child(1) { transform: rotate(-0.4deg); }
+    .skill-card:nth-child(2) { transform: rotate(0.3deg); }
+    .skill-card:nth-child(3) { transform: rotate(0.5deg); }
+    .skill-card:nth-child(4) { transform: rotate(-0.6deg); }
+    .skill-card:hover {
+      transform: translateY(-4px) rotate(0deg) !important;
+    }
+
+    .step-pip {
+      transition: transform 0.2s ease;
+    }
+    .step-pip:hover {
+      transform: scale(1.2);
+    }
+
+    .install-block {
+      position: relative;
+    }
+    .install-block::before {
+      content: '$';
+      position: absolute;
+      left: -1.25rem;
+      color: #64748b;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+  <!-- Hero -->
+  <header class="bg-owl-dark text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle, #2dd4bf 1px, transparent 1px); background-size: 20px 20px;"></div>
+    <div class="max-w-5xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-10 relative">
+      <img src="../logo.png" alt="A studious owl with a checklist, the evals-skills mascot" class="w-40 h-40 rounded-2xl shadow-lg flex-shrink-0 hover:rotate-3 transition-transform duration-300 ring-2 ring-owl-teal/30 ring-offset-4 ring-offset-owl-dark">
+      <div>
+        <h1 class="text-4xl font-bold tracking-tight">evals-skills</h1>
+        <p class="mt-3 text-lg text-slate-300 max-w-xl">
+          Skills for AIs to do evals, error analysis, and more.
+          Install them into your coding agent and let it guide you through the evaluation lifecycle.
+        </p>
+        <p class="mt-2 text-sm text-slate-400">
+          Based on knowledge from the
+          <a href="https://maven.com/parlance-labs/evals" class="text-owl-teal hover:underline">AI Evals For Engineers &amp; PMs</a>
+          course.
+        </p>
+        <div class="mt-6 pl-5">
+          <code class="install-block inline-block bg-slate-800/80 text-owl-teal px-4 py-2 rounded-lg text-sm font-mono select-all border border-slate-700">npx skills add maragudk/evals-skills</code>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Workflow overview -->
+  <section class="max-w-5xl mx-auto px-6 py-14">
+    <h2 class="text-2xl font-bold text-center mb-2">The Evaluation Lifecycle</h2>
+    <p class="text-center text-slate-500 mb-10 max-w-2xl mx-auto">
+      These skills guide you through a structured methodology: from manually reviewing traces, to building a failure taxonomy, to deploying automated judges. Prompt engineering supports every step.
+    </p>
+
+    <div class="grid grid-cols-1 lg:grid-cols-7 items-start gap-y-10 lg:gap-y-0 lg:gap-x-0">
+
+      <!-- Step 1 -->
+      <div class="lg:col-span-2 workflow-connector flex flex-col items-center text-center px-2">
+        <div class="step-pip w-11 h-11 rounded-full bg-owl-teal/20 text-owl-dark font-bold flex items-center justify-center text-sm mb-3 border-2 border-owl-teal/40">1</div>
+        <h3 class="font-semibold text-sm">Open Coding</h3>
+        <p class="text-xs text-slate-500 mt-1">Annotate traces manually</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="lg:col-span-2 workflow-connector flex flex-col items-center text-center px-2">
+        <div class="step-pip w-11 h-11 rounded-full bg-owl-purple/20 text-owl-dark font-bold flex items-center justify-center text-sm mb-3 border-2 border-owl-purple/40">2</div>
+        <h3 class="font-semibold text-sm">Axial Coding</h3>
+        <p class="text-xs text-slate-500 mt-1">Cluster into failure modes</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="lg:col-span-2 flex flex-col items-center text-center px-2">
+        <div class="step-pip w-11 h-11 rounded-full bg-owl-amber/20 text-owl-dark font-bold flex items-center justify-center text-sm mb-3 border-2 border-owl-amber/40">3</div>
+        <h3 class="font-semibold text-sm">Automated Eval</h3>
+        <p class="text-xs text-slate-500 mt-1">Deploy LLM judges at scale</p>
+      </div>
+
+      <!-- Cross-cutting -->
+      <div class="lg:col-span-1 flex flex-col items-center text-center px-2">
+        <div class="step-pip w-11 h-11 rounded-full bg-owl-coral/20 text-owl-dark font-bold flex items-center justify-center text-sm mb-3 border-2 border-owl-coral/40 border-dashed">&bull;</div>
+        <h3 class="font-semibold text-sm text-owl-coral">Cross&#8209;cutting</h3>
+        <p class="text-xs text-slate-500 mt-1">Prompt eng.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="max-w-5xl mx-auto px-6 pb-20">
+    <h2 class="text-2xl font-bold text-center mb-10">Available Skills</h2>
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <!-- trace-annotation-tool -->
+      <div class="skill-card bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-lg border-t-4 border-t-owl-teal">
+        <div class="flex items-start gap-3 mb-3">
+          <span class="inline-block bg-owl-teal/10 text-owl-dark text-xs font-mono font-semibold px-2 py-1 rounded">Step 1</span>
+          <h3 class="font-bold text-lg leading-tight">trace-annotation-tool</h3>
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Generate a custom local web app for <strong>open coding</strong> of LLM traces &mdash;
+          the first qualitative pass of error analysis.
+          Review traces one by one, write freeform observations about what went wrong, and mark each as pass, fail, or defer.
+        </p>
+        <ul class="mt-4 text-xs text-slate-500 space-y-1">
+          <li>&bull; Tailored trace rendering for your specific data format</li>
+          <li>&bull; Keyboard shortcuts for fast annotation sessions</li>
+          <li>&bull; Auto-saves to JSONL &mdash; close and resume anytime</li>
+          <li>&bull; Built with FastHTML, TailwindCSS, and HTMX</li>
+        </ul>
+      </div>
+
+      <!-- failure-taxonomy -->
+      <div class="skill-card bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-lg border-t-4 border-t-owl-purple">
+        <div class="flex items-start gap-3 mb-3">
+          <span class="inline-block bg-owl-purple/10 text-owl-dark text-xs font-mono font-semibold px-2 py-1 rounded">Step 2</span>
+          <h3 class="font-bold text-lg leading-tight">failure-taxonomy</h3>
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Transform raw freeform annotations into a structured taxonomy of
+          <strong>binary failure modes</strong> via axial coding.
+          Groups similar observations into 3&ndash;7 coherent, non-overlapping, application-specific categories.
+        </p>
+        <ul class="mt-4 text-xs text-slate-500 space-y-1">
+          <li>&bull; Clusters open codes into actionable failure categories</li>
+          <li>&bull; Re-labels every trace against the taxonomy</li>
+          <li>&bull; Quantifies error rates and prioritizes by frequency</li>
+          <li>&bull; Follows grounded theory methodology</li>
+        </ul>
+      </div>
+
+      <!-- llm-as-a-judge -->
+      <div class="skill-card bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-lg border-t-4 border-t-owl-amber">
+        <div class="flex items-start gap-3 mb-3">
+          <span class="inline-block bg-owl-amber/10 text-owl-dark text-xs font-mono font-semibold px-2 py-1 rounded">Step 3</span>
+          <h3 class="font-bold text-lg leading-tight">llm-as-a-judge</h3>
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Build reliable <strong>automated evaluators</strong> that use an LLM to judge the outputs of another LLM pipeline.
+          Each judge targets a single binary failure mode with a Pass/Fail verdict.
+        </p>
+        <ul class="mt-4 text-xs text-slate-500 space-y-1">
+          <li>&bull; Structured judge prompt design with few-shot examples</li>
+          <li>&bull; Train/Dev/Test data splitting for prompt refinement</li>
+          <li>&bull; TPR/TNR alignment metrics with iterative tuning</li>
+          <li>&bull; Bias-corrected success rate estimation (Rogan-Gladen)</li>
+        </ul>
+      </div>
+
+      <!-- prompt-engineering -->
+      <div class="skill-card bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-lg border-t-4 border-t-owl-coral border-dashed border-t-0" style="border-top: 4px dashed #f97066;">
+        <div class="flex items-start gap-3 mb-3">
+          <span class="inline-block bg-owl-coral/10 text-owl-dark text-xs font-mono font-semibold px-2 py-1 rounded">Cross-cutting</span>
+          <h3 class="font-bold text-lg leading-tight">prompt-engineering</h3>
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Craft, review, and improve prompts for LLM pipelines. Covers the
+          <strong>two gulfs</strong> framework: specification (unclear instructions)
+          vs. generalization (model limitations), and a seven-component prompt structure.
+        </p>
+        <ul class="mt-4 text-xs text-slate-500 space-y-1">
+          <li>&bull; Diagnose whether failures are specification or generalization gaps</li>
+          <li>&bull; Seven-component prompt structure (role, instructions, context, ...)</li>
+          <li>&bull; Iterative refinement process for task and judge prompts</li>
+          <li>&bull; Anti-patterns and quick wins for common issues</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Install -->
+  <section class="bg-owl-dark text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle, #2dd4bf 1px, transparent 1px); background-size: 20px 20px;"></div>
+    <div class="max-w-5xl mx-auto px-6 py-14 text-center relative">
+      <h2 class="text-2xl font-bold mb-3">Get Started</h2>
+      <p class="text-slate-300 mb-6 max-w-lg mx-auto">
+        Install all skills into your coding agent with a single command, then ask it to help you evaluate your LLM pipeline.
+      </p>
+      <div class="pl-5 inline-block">
+        <code class="install-block inline-block bg-slate-800/80 text-owl-teal px-5 py-3 rounded-lg text-sm font-mono select-all border border-slate-700">npx skills add maragudk/evals-skills</code>
+      </div>
+      <p class="mt-6 text-sm text-slate-400">
+        Powered by <a href="https://skills.sh" class="text-owl-teal hover:underline">skills.sh</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="max-w-5xl mx-auto px-6 py-8 text-center text-xs text-slate-400">
+    <p>
+      Based on knowledge from the
+      <a href="https://maven.com/parlance-labs/evals" class="hover:underline">AI Evals For Engineers &amp; PMs</a>
+      course, but otherwise unaffiliated.
+    </p>
+    <p class="mt-2">
+      <a href="https://github.com/maragudk/evals-skills" class="hover:underline">GitHub</a>
+    </p>
+  </footer>
+
+</body>
+</html>
