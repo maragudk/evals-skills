@@ -15,3 +15,4 @@ npx skills add maragudk/evals-skills
 ## Available skills
 
 - **llm-as-a-judge** - Build, validate, and deploy LLM-as-Judge evaluators for automated quality assessment of LLM pipeline outputs
+- **prompt-engineering** - Craft, review, and improve prompts for LLM pipelines, including task prompts, system prompts, and LLM-as-Judge prompts
